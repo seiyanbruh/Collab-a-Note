@@ -28,6 +28,8 @@
     filter: brightness(70%); 
 }
 
+/* Body */
+
 
 
 /* Classes */
@@ -41,8 +43,10 @@
 .dashboard-class-container{
     display: flex; 
     justify-content: space-around;
-    
+    padding-left: 100px;
+    padding-right: 100px
 }
+
 
 
 
@@ -64,8 +68,8 @@
     border-radius: 15px;
     margin: 30px;
     background-color: #f1f1f1;
-    -webkit-filter: drop-shadow(2px 2px 2px #222222);
-    filter: drop-shadow(2px 2px 2px #222222)
+    -webkit-filter: drop-shadow(1px 1px 1px #222222);
+    filter: drop-shadow(1px 1px 1px #222222)
 }
 
 .card-item-image{
