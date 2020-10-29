@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "../../styles/DashBoard.css"
+import { ClassContext } from "../../context/ClassContext"
+
 
 const DashBoardPageHeader = () => {
+
+    const [classes, setClasses] = useContext(ClassContext)
 
     return(
         <div className="dashboard-page-header-container">
@@ -11,7 +15,7 @@ const DashBoardPageHeader = () => {
             
             <div className="title">
                 <h2>Welcome to Fall 2020</h2>
-                <p>You have 3 classes</p>
+                <p>You have {classes.length} classes</p>
             </div>
         </div>
 

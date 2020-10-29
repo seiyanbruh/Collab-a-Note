@@ -10,55 +10,56 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { v4 as uuidv4 } from 'uuid';
 
 
-const AddClassForm = (props) => {
+const AddNoteForm = (props) => {
 
-    const [newClass, setNewClass] = useState({
+    const [newNote, setNewNote] = useState({
         id: "",
-        name: "Undefined",
+        classId: props.classItem.id,
+        title: "Untitled",
+        content: "Your note goes here...",
         ownerId: "123123",
         owner: {
             id: "123123",
             name: "Dung Nguyen",
             email: "adron0914@gmail.com"
         },
-        creationDate: "Oct 25, 2000",
-        lastUpdate: "Oct 25, 2000",
-        coverImg: "https://i.pinimg.com/originals/be/96/a1/be96a12fe9f5fd8eaae8518455b4b6a3.png"
+        creationDate: "",
+        lastUpdate: "",
     })
 
     const getCurrentTime = () =>{
         return new Date();
     }
 
-    const createNewClassId = () => {
+    const createNewNoteId = () => {
         const id = uuidv4()
         console.log(id)
         return id;
     }
 
-    const handleClassNameChange = (event) => {
-        setNewClass({
-            ...newClass,
-            name: event.target.value
+    const handleTitleChange = (event) => {
+        setNewNote({
+            ...newNote,
+            title: event.target.value
         })
     }
 
     return (
         <div>
         <Dialog open={props.formStatus} onClose={props.handleClose} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Add class</DialogTitle>
+            <DialogTitle id="form-dialog-title">Add Note</DialogTitle>
             <DialogContent>
             <DialogContentText>
-                Add class to your dashboard.
+                Add note to your {props.classItem.name} class.
             </DialogContentText>
             <TextField
                 autoFocus
                 margin="dense"
                 id="name"
-                label="Class name"
+                label="Title"
                 type="text"
                 fullWidth
-                onChange={(e) => handleClassNameChange(e)}
+                onChange={(e) => handleTitleChange(e)}
             />
             </DialogContent>
             <DialogActions>
@@ -67,12 +68,12 @@ const AddClassForm = (props) => {
             </Button>
             <Button onClick={() => {
 
-                const id = createNewClassId();
+                const id = createNewNoteId();
                 const creationDate = getCurrentTime();
                 const lastUpdate = getCurrentTime();
 
-                props.addClass({
-                    ...newClass,
+                props.addNote({
+                    ...newNote,
                     id,
                     creationDate,
                     lastUpdate,
@@ -87,4 +88,4 @@ const AddClassForm = (props) => {
 }
 
 
-export default AddClassForm
+export default AddNoteForm

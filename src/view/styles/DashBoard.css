@@ -35,6 +35,7 @@
 /* Classes */
 
 .dashboard-body-title{
+    font-family: Montserrat-Bold;
     text-align: center;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -53,14 +54,6 @@
 
 
 /* Card Item */
-
-.dashboard-link-style{
-    color: black;
-}
-.dashboard-link-style:hover{
-    text-decoration: none;
-    color: black;
-}
 
 .card-item-container{
     width: 340px;
@@ -82,9 +75,11 @@
 
 .card-item-title{
     margin: 10px;
+    font-size: 2rem;
 }
 
 .card-item-subtitle{
     margin: 5px 10px;
     font-size: 1.2rem;
+    font-family: Montserrat-Light;
 }
