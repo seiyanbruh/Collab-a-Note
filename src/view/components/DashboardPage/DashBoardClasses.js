@@ -9,6 +9,8 @@ import { ClassContext } from "../../context/ClassContext"
 import AddClassForm from './AddClassForm';
 import { addClass } from "../../../controller/note"
 import { useHistory } from 'react-router-dom'
+import moment from 'moment';
+
 
 const DashBoardClasses = (props) => {
 
@@ -30,12 +32,12 @@ const DashBoardClasses = (props) => {
     };
 
     const moveToNotePage = (classItem) => {
-        //history.push(`/dashboard/course/${classItem.id}`) 
+        history.push(`/dashboard/course/${classItem.id}`, classItem) 
 
-        history.push({
-            pathname: `/dashboard/course/${classItem.id}`,
-            classItem,
-          });
+        // history.push({
+        //     pathname: `/dashboard/course/${classItem.id}`,
+        //     classItem: classItem,
+        // });
           
     }
 
@@ -57,7 +59,12 @@ const DashBoardClasses = (props) => {
             <Fab color="primary" aria-label="add" style={addClassIconStyle} onClick={() => setAddClassForm(true)}>
                 <AddIcon/>
             </Fab>
-            <AddClassForm formStatus={addClassForm} handleClose={() => setAddClassForm(false)} addClass={(newClass) => handleAddClass(newClass)}/>
+            <AddClassForm 
+                formStatus={addClassForm} 
+                handleClose={() => setAddClassForm(false)} 
+                addClass={(newClass) => handleAddClass(newClass)}
+
+            />
             <div className="row dashboard-class-container">
 
                 {classes.map(classItem => (
@@ -66,8 +73,9 @@ const DashBoardClasses = (props) => {
                         className="col-lg-3 col-md-6, col-sm-12"
                         imgUrl={classItem.coverImg}
                         title={classItem.name}
-                        subtitleOne={classItem.notes.length + ` notes`}
-                        subtitleTwo={`created by ` + classItem.owner.name}
+                        subtitleOne={`owned by ${classItem.owner.name}`}
+                        subtitleTwo={`created on ${classItem.creationDate.toLocaleDateString("en-US")}`}
+                        subtitleThree={`last updated on ${classItem.lastUpdate.toLocaleDateString("en-US")}`}
                         onClick={() => {moveToNotePage(classItem)}}
                     />
                 ))}

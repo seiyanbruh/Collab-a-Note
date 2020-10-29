@@ -1,5 +1,5 @@
 import React from "react";
-import { CardDeck, ListGroup, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 import "../styles/HomePage.css";
 import CourseListHomePage from "../components/HomePage/Courses";
