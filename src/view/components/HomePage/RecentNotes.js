@@ -1,43 +1,16 @@
 import React from "react";
-import { CardDeck, ListGroup, Row, Col } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap";
 
-const recentnotes = [
-  {
-    id: 1,
-    lastupdated: "10:21 am",
-    title: "Project Notes",
-    className: "Software Engineering",
-    author: "Eric Carle",
-    img:
-      "https://images-na.ssl-images-amazon.com/images/I/71KilybDOoL._AC_UL200_SR200,200_.jpg",
-  },
-
-  {
-    id: 2,
-    lastupdated: "Yesterday",
-    title: "Heap Sort",
-    className: "Algorithms",
-    author: "Giles Andreae",
-    img:
-      "https://images-na.ssl-images-amazon.com/images/I/51qvh4MALwL._AC_UL200_SR200,200_.jpg",
-  },
-  {
-    id: 3,
-    title: "Magnetism",
-    lastupdated: "10/21/20",
-    className: "Thermodynamics",
-    author: "Craig Smith",
-    img:
-      "https://images-na.ssl-images-amazon.com/images/I/71N4oeWwYlL._AC_UL200_SR200,200_.jpg",
-  },
-];
+import recentnotes from "./recent-notes";
+import courses from "./courses-list";
 
 const RecentNote = (props) => {
+  const result = courses.find((course) => course.code === props.courseCode);
   return (
-    <div className="recent-notes-list">
+    <div className="recent-notes-list" onClick={() => alert("route to note")}>
       <h2>{props.title}</h2>
-      <h4>{props.className}</h4>
-      <h6>{props.lastupdated}</h6>
+      <h4 onClick={() => alert("route to course")}>{result.courseName}</h4>
+      <h6>{props.lastUpdated}</h6>
     </div>
   );
 };
