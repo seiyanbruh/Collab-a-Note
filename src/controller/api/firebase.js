@@ -23,7 +23,7 @@ const apiResponse = (status, message, data) => {
     }
 }
 
-/* Firease service */
+/* Firebase service */
 
 //Firebase Authentication
 const auth = firebase.auth();
@@ -31,8 +31,6 @@ const auth = firebase.auth();
 
 //Firestore
 const db = firebase.firestore();
-
-
 
 export{
     db,
